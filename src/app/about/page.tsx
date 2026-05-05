@@ -2,10 +2,7 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-neutral-950 text-neutral-100">
       <section className="mx-auto max-w-4xl px-6 py-10">
-        <a href="/" className="text-sm text-neutral-400 hover:text-emerald-400">
-          ← Home
-        </a>
-
+    
         <p className="mt-10 text-sm font-semibold uppercase tracking-[0.3em] text-emerald-400">
           Bangin Hangers
         </p>
