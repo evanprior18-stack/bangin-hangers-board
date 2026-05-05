@@ -11,8 +11,7 @@ export default function Home() {
         </h1>
 
         <p className="mt-6 max-w-2xl text-lg leading-8 text-neutral-300">
-          Model lines vs market lines, with notes on where the model sees value,
-          where I&apos;m passing, and what I&apos;m reviewing.
+          Daily MLB model lines vs market lines, with notes on where the model sees value, where I'm passing, and what I'm reviewing.
         </p>
 
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
