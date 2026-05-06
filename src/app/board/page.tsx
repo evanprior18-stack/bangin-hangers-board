@@ -158,9 +158,6 @@ export default async function BoardPage() {
       <section className="mx-auto max-w-[1700px] px-4 py-8 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-6 border-b border-neutral-800 pb-8 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <a href="/" className="text-sm text-neutral-400 hover:text-emerald-400">
-              ← Home
-            </a>
 
             <p className="mt-6 text-sm font-semibold uppercase tracking-[0.3em] text-emerald-400">
               Bangin Hangers
