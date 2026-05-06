@@ -19,6 +19,36 @@ type GameRow = {
   last_updated: string;
 };
 
+const STATUS_SORT_ORDER: Record<string, number> = {
+  Official: 1,
+  Lean: 2,
+  Pass: 3,
+  "No Edge": 4,
+  "Waiting Lineups": 5,
+};
+
+function getStatusSortRank(status: string) {
+  return STATUS_SORT_ORDER[status] ?? 99;
+}
+
+function getUnitSizeNumber(unitSize: string) {
+  const parsed = Number(unitSize);
+  return Number.isFinite(parsed) ? parsed : 0;
+}
+
+function sortBoardRows(rows: GameRow[]) {
+  return [...rows].sort((a, b) => {
+    const statusDifference =
+      getStatusSortRank(a.status) - getStatusSortRank(b.status);
+
+    if (statusDifference !== 0) {
+      return statusDifference;
+    }
+
+    return getUnitSizeNumber(b.unit_size) - getUnitSizeNumber(a.unit_size);
+  });
+}
+
 const SHEET_CSV_URL =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vRtu-jA4QSoNpnXLP6_r98HoitjsCAdAnxzz6ZlkYHqCWC4IpWAIbU4YGT_AQ7b6WkN1_fJsvmacznM/pub?gid=392194397&single=true&output=csv";
 
@@ -77,15 +107,18 @@ async function getBoardData() {
   }
 
   const csv = await response.text();
-  return parseCSV(csv);
+const rows = parseCSV(csv);
+
+return sortBoardRows(rows);
 }
 
 function statusClass(status: string) {
   if (status === "Official") return "bg-emerald-400 text-neutral-950";
   if (status === "Lean") return "bg-blue-400 text-neutral-950";
-  if (status === "Review") return "bg-amber-300 text-neutral-950";
   if (status === "Pass") return "bg-rose-400 text-neutral-950";
+  if (status === "No Edge") return "bg-orange-300 text-neutral-950";
   if (status === "Waiting Lineups") return "bg-neutral-700 text-neutral-100";
+  if (status === "Review") return "bg-amber-300 text-neutral-950";
   if (status === "Stale") return "bg-purple-400 text-neutral-950";
   return "bg-neutral-800 text-neutral-300";
 }
