@@ -140,6 +140,8 @@ function formatUnits(units: string) {
 
   if (Number.isNaN(number)) return units;
 
+  if (number === 3) return "REVIEW";
+
   return `${number}u`;
 }
 
@@ -304,7 +306,7 @@ export default async function BoardPage() {
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <h2 className="text-lg font-bold">{game.game}</h2>
-                    <p className="mt-1 text-sm text-neutral-400">
+                    <p className="mt-1 overflow-x-auto whitespace-nowrap text-sm text-neutral-400">
                       {game.away_sp} vs {game.home_sp}
                     </p>
                   </div>
