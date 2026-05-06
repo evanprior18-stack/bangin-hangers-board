@@ -130,7 +130,9 @@ function formatValue(value: string) {
 
   if (Number.isNaN(number)) return value;
 
-  return number > 0 ? `+${number.toFixed(1)}` : number.toFixed(1);
+  if (number <= 0) return "—";
+
+  return `+${number.toFixed(1)}`;
 }
 
 function formatUnits(units: string) {
