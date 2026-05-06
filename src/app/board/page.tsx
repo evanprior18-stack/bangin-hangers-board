@@ -184,6 +184,58 @@ export default async function BoardPage() {
           </div>
         </div>
 
+        <div className="mt-8 rounded-2xl border border-neutral-800 bg-neutral-900 p-5">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-400">
+                Status Legend
+              </p>
+              <p className="mt-2 max-w-3xl text-sm leading-6 text-neutral-300">
+                Not every model edge is an official bet. Status shows how each
+                game is being handled based on value, unit size, and lineup
+                confidence.
+              </p>
+            </div>
+
+            <div className="grid gap-3 text-sm sm:grid-cols-2 lg:min-w-[720px] lg:grid-cols-5">
+              <div className="rounded-xl border border-neutral-800 bg-neutral-950 p-3">
+                <span className="rounded-full bg-emerald-400 px-3 py-1 text-xs font-semibold text-neutral-950">
+                  Official
+                </span>
+                <p className="mt-3 text-neutral-300">Tracked official play.</p>
+              </div>
+
+              <div className="rounded-xl border border-neutral-800 bg-neutral-950 p-3">
+                <span className="rounded-full bg-blue-400 px-3 py-1 text-xs font-semibold text-neutral-950">
+                  Lean
+                </span>
+                <p className="mt-3 text-neutral-300">Model edge, not official.</p>
+              </div>
+
+              <div className="rounded-xl border border-neutral-800 bg-neutral-950 p-3">
+                <span className="rounded-full bg-rose-400 px-3 py-1 text-xs font-semibold text-neutral-950">
+                  Pass
+                </span>
+                <p className="mt-3 text-neutral-300">Reviewed and passed.</p>
+              </div>
+
+              <div className="rounded-xl border border-neutral-800 bg-neutral-950 p-3">
+                <span className="rounded-full bg-orange-300 px-3 py-1 text-xs font-semibold text-neutral-950">
+                  No Edge
+                </span>
+                <p className="mt-3 text-neutral-300">No positive model edge.</p>
+              </div>
+
+              <div className="rounded-xl border border-neutral-800 bg-neutral-950 p-3">
+                <span className="whitespace-nowrap rounded-full bg-neutral-700 px-3 py-1 text-xs font-semibold text-neutral-100">
+                    Waiting Lineups
+                </span>
+                <p className="mt-3 text-neutral-300">Pending lineup review.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="mt-8 overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900">
           <div className="hidden overflow-x-auto lg:block">
             <table className="min-w-[1500px] w-full border-collapse text-left text-sm">
