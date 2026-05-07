@@ -216,6 +216,12 @@ export default async function HistoryPage() {
             Model Comparison
           </p>
 
+        <p className="mt-3 max-w-4xl text-sm leading-6 text-neutral-400">
+            The primary public record is Current Model - Official Plays. Flat Unit
+            results show how the same model performed using a simple 1-unit approach.
+            Prior Model results are included only for historical context.
+        </p>
+
           <div className="mt-5 overflow-x-auto">
             <table className="w-full min-w-[760px] border-collapse text-left text-sm">
               <thead className="text-xs uppercase tracking-wide text-neutral-500">
