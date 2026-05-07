@@ -308,23 +308,21 @@ export default async function BoardPage() {
                 key={game.game}
                 className="overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-950 p-4"
               >
-                <div className="flex items-start justify-between gap-3">
-                  <div className="min-w-0 flex-1">
-                    <h2 className="text-lg font-bold">{game.game}</h2>
-                    <p className="mt-1 overflow-x-auto whitespace-nowrap text-sm text-neutral-400">
-                      {game.away_sp} vs {game.home_sp}
-                    </p>
-                  </div>
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <h2 className="text-lg font-bold">{game.game}</h2>
 
                   <span
-                    className={`max-w-[112px] shrink-0 truncate whitespace-nowrap rounded-full px-3 py-1 text-xs font-semibold ${statusClass(
+                    className={`shrink-0 whitespace-nowrap rounded-full px-3 py-1 text-xs font-semibold ${statusClass(
                       game.status
                     )}`}
-                    title={game.status}
                   >
                     {game.status}
                   </span>
                 </div>
+
+                <p className="mt-2 overflow-x-auto whitespace-nowrap text-sm text-neutral-400">
+                  {game.away_sp} vs {game.home_sp}
+                </p>
 
                 <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
                   <div>
