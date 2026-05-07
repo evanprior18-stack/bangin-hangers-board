@@ -73,6 +73,13 @@ function getSectionRows(rows: HistoryRow[], section: string) {
   return rows.filter((row) => row.section === section);
 }
 
+function getMetaValue(rows: HistoryRow[], label: string) {
+  return (
+    rows.find((row) => row.section === "meta" && row.label === label)?.notes ||
+    ""
+  );
+}
+
 function formatUnits(units: string) {
   if (!units) return "—";
 
@@ -130,6 +137,7 @@ export default async function HistoryPage() {
   const unitBreakdownRows = getSectionRows(rows, "unit_breakdown");
   const weeklyRows = getSectionRows(rows, "weekly");
   const monthlyRows = getSectionRows(rows, "monthly");
+  const historyLastUpdated = getMetaValue(rows, "last_updated");
 
   return (
     <main className="min-h-screen bg-neutral-950 text-neutral-100">
@@ -149,6 +157,14 @@ export default async function HistoryPage() {
             are included as a simple comparison view. Prior Model results are
             shown for historical context.
           </p>
+          {historyLastUpdated && (
+            <p className="mt-4 text-sm text-neutral-500">
+            History last updated:{" "}
+            <span className="font-medium text-neutral-300">
+            {historyLastUpdated}
+            </span>
+            </p>
+)}
         </div>
 
         <section className="mt-8 rounded-2xl border border-neutral-800 bg-neutral-900 p-5 sm:p-6">
