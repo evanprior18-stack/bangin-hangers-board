@@ -107,9 +107,9 @@ async function getBoardData() {
   }
 
   const csv = await response.text();
-const rows = parseCSV(csv);
+  const rows = parseCSV(csv);
 
-return sortBoardRows(rows);
+  return sortBoardRows(rows);
 }
 
 function statusClass(status: string) {
@@ -162,7 +162,6 @@ export default async function BoardPage() {
       <section className="mx-auto max-w-[1700px] px-4 py-8 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-6 border-b border-neutral-800 pb-8 sm:flex-row sm:items-end sm:justify-between">
           <div>
-
             <p className="mt-6 text-sm font-semibold uppercase tracking-[0.3em] text-emerald-400">
               Bangin Hangers
             </p>
@@ -181,7 +180,9 @@ export default async function BoardPage() {
             <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">
               Last Updated
             </p>
-            <p className="mt-1 whitespace-nowrap font-semibold">{lastUpdated}</p>
+            <p className="mt-1 whitespace-nowrap font-semibold">
+              {lastUpdated}
+            </p>
           </div>
         </div>
 
@@ -210,7 +211,9 @@ export default async function BoardPage() {
                 <span className="rounded-full bg-blue-400 px-3 py-1 text-xs font-semibold text-neutral-950">
                   Lean
                 </span>
-                <p className="mt-3 text-neutral-300">Model edge, not official.</p>
+                <p className="mt-3 text-neutral-300">
+                  Model edge, not official.
+                </p>
               </div>
 
               <div className="rounded-xl border border-neutral-800 bg-neutral-950 p-3">
@@ -229,7 +232,7 @@ export default async function BoardPage() {
 
               <div className="rounded-xl border border-neutral-800 bg-neutral-950 p-3">
                 <span className="whitespace-nowrap rounded-full bg-neutral-700 px-3 py-1 text-xs font-semibold text-neutral-100">
-                    Waiting Lineups
+                  Waiting Lineups
                 </span>
                 <p className="mt-3 text-neutral-300">Pending lineup review.</p>
               </div>
@@ -303,10 +306,10 @@ export default async function BoardPage() {
             {games.map((game) => (
               <article
                 key={game.game}
-                className="rounded-2xl border border-neutral-800 bg-neutral-950 p-4"
+                className="overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-950 p-4"
               >
-                <div className="flex items-start justify-between gap-4">
-                  <div>
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0 flex-1">
                     <h2 className="text-lg font-bold">{game.game}</h2>
                     <p className="mt-1 overflow-x-auto whitespace-nowrap text-sm text-neutral-400">
                       {game.away_sp} vs {game.home_sp}
@@ -314,9 +317,10 @@ export default async function BoardPage() {
                   </div>
 
                   <span
-                    className={`whitespace-nowrap rounded-full px-3 py-1 text-xs font-semibold ${statusClass(
+                    className={`max-w-[112px] shrink-0 truncate whitespace-nowrap rounded-full px-3 py-1 text-xs font-semibold ${statusClass(
                       game.status
                     )}`}
+                    title={game.status}
                   >
                     {game.status}
                   </span>
@@ -342,7 +346,9 @@ export default async function BoardPage() {
 
                   <div>
                     <p className="text-neutral-500">Units</p>
-                    <p className="font-semibold">{formatUnits(game.unit_size)}</p>
+                    <p className="font-semibold">
+                      {formatUnits(game.unit_size)}
+                    </p>
                   </div>
                 </div>
 
