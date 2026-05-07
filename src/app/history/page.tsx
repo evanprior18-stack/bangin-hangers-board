@@ -85,6 +85,18 @@ function formatUnits(units: string) {
   return number.toFixed(2);
 }
 
+function unitColorClass(units: string) {
+  if (!units) return "text-neutral-400";
+
+  const number = Number(units);
+
+  if (Number.isNaN(number)) return "text-neutral-100";
+  if (number > 0) return "text-emerald-300";
+  if (number < 0) return "text-rose-300";
+
+  return "text-neutral-100";
+}
+
 function formatRecord(wins: string, losses: string) {
   if (!wins && !losses) return "—";
 
@@ -156,7 +168,13 @@ export default async function HistoryPage() {
 
             <div className="rounded-2xl border border-neutral-800 bg-neutral-950 p-5">
               <p className="text-sm text-neutral-500">Units</p>
-              <p className="mt-2 text-3xl font-bold text-emerald-300">
+              <p
+                className={`mt-2 text-3xl font-bold ${
+                  primaryRow
+                    ? unitColorClass(primaryRow.units)
+                    : "text-neutral-400"
+                }`}
+              >
                 {primaryRow ? formatUnits(primaryRow.units) : "—"}
               </p>
             </div>
@@ -206,7 +224,11 @@ export default async function HistoryPage() {
                     <td className="whitespace-nowrap px-4 py-4">
                       {formatWinPct(row.wins, row.losses)}
                     </td>
-                    <td className="whitespace-nowrap px-4 py-4 font-semibold text-emerald-300">
+                    <td
+                      className={`whitespace-nowrap px-4 py-4 font-semibold ${unitColorClass(
+                        row.units
+                      )}`}
+                    >
                       {formatUnits(row.units)}
                     </td>
                     <td className="min-w-[260px] px-4 py-4 text-neutral-300">
@@ -239,7 +261,11 @@ export default async function HistoryPage() {
                 <p className="mt-1 text-sm text-neutral-400">
                   {formatWinPct(row.wins, row.losses)}
                 </p>
-                <p className="mt-3 text-lg font-semibold text-emerald-300">
+                <p
+                  className={`mt-3 text-lg font-semibold ${unitColorClass(
+                    row.units
+                  )}`}
+                >
                   {formatUnits(row.units)}
                 </p>
               </div>
@@ -268,7 +294,11 @@ export default async function HistoryPage() {
                       <td className="whitespace-nowrap px-4 py-4 font-semibold">
                         {row.label}
                       </td>
-                      <td className="whitespace-nowrap px-4 py-4 font-semibold text-emerald-300">
+                      <td
+                        className={`whitespace-nowrap px-4 py-4 font-semibold ${unitColorClass(
+                          row.units
+                        )}`}
+                      >
                         {formatUnits(row.units)}
                       </td>
                     </tr>
@@ -298,7 +328,11 @@ export default async function HistoryPage() {
                       <td className="whitespace-nowrap px-4 py-4 font-semibold">
                         {row.label}
                       </td>
-                      <td className="whitespace-nowrap px-4 py-4 font-semibold text-emerald-300">
+                      <td
+                        className={`whitespace-nowrap px-4 py-4 font-semibold ${unitColorClass(
+                          row.units
+                        )}`}
+                      >
                         {formatUnits(row.units)}
                       </td>
                     </tr>
