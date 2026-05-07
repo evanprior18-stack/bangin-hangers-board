@@ -187,6 +187,40 @@ export default async function BoardPage() {
         </div>
 
         <div className="mt-8 rounded-2xl border border-neutral-800 bg-neutral-900 p-5">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-400">
+            How to read this board
+          </p>
+
+          <div className="mt-3 grid gap-3 text-sm leading-6 text-neutral-300 sm:grid-cols-2">
+            <p>
+              <span className="font-semibold text-neutral-100">Market</span> is
+              the current available price.
+            </p>
+
+            <p>
+              <span className="font-semibold text-neutral-100">Model</span>{" "} is
+              the model&apos;s projected fair line.
+            </p>
+
+            <p>
+              <span className="font-semibold text-neutral-100">Value</span>{" "}
+              shows the difference between the market and model.
+            </p>
+
+            <p>
+              <span className="font-semibold text-neutral-100">Status</span>{" "}
+              explains whether the game is official, lean, pass, no edge, or
+              waiting on lineup and news review.
+            </p>
+          </div>
+
+          <p className="mt-4 text-sm text-neutral-400">
+            Not every model edge becomes an official play. Status reflects the
+            review process, not just raw model value.
+          </p>
+        </div>
+
+        <div className="mt-8 rounded-2xl border border-neutral-800 bg-neutral-900 p-5">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-400">
