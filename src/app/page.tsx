@@ -6,12 +6,14 @@ export default function Home() {
           Bangin Hangers
         </p>
 
-        <h1 className="mt-5 max-w-3xl text-4xl font-bold tracking-tight sm:text-6xl">
-          MLB Model Board
+        <h1 className="mt-5 max-w-4xl text-4xl font-bold tracking-tight sm:text-6xl">
+          Public MLB Model Board & Results Log
         </h1>
 
         <p className="mt-6 max-w-2xl text-lg leading-8 text-neutral-300">
-          Daily MLB model lines vs market lines, with notes on where the model sees value, where I'm passing, and what I'm reviewing.
+          Bangin Hangers tracks daily MLB model output, market comparison,
+          official plays, review spots, and public results. Built as a
+          transparent model log — not a picks service.
         </p>
 
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
@@ -20,6 +22,13 @@ export default function Home() {
             className="rounded-full bg-emerald-400 px-6 py-3 text-center font-semibold text-neutral-950 transition hover:bg-emerald-300"
           >
             View Today&apos;s Board
+          </a>
+
+          <a
+            href="/history"
+            className="rounded-full border border-neutral-700 px-6 py-3 text-center font-semibold text-neutral-100 transition hover:border-neutral-500"
+          >
+            View History
           </a>
 
           <a
