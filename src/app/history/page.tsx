@@ -57,7 +57,7 @@ function parseCSVLine(line: string): string[] {
 
 async function getHistoryData() {
   const response = await fetch(HISTORY_CSV_URL, {
-    next: { revalidate: 60 },
+    cache: "no-store",
   });
 
   if (!response.ok) {
