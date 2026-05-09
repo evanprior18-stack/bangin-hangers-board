@@ -99,7 +99,7 @@ function parseCSVLine(line: string): string[] {
 
 async function getBoardData() {
   const response = await fetch(SHEET_CSV_URL, {
-    next: { revalidate: 60 },
+    cache: "no-store",
   });
 
   if (!response.ok) {
