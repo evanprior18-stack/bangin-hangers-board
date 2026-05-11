@@ -165,6 +165,14 @@ export default async function HistoryPage() {
             </span>
             </p>
 )}
+<div className="mt-4 rounded-2xl border border-neutral-800 bg-neutral-950/70 p-4">
+  <p className="text-sm leading-6 text-neutral-400">
+    <span className="font-semibold text-neutral-200">Record scope:</span>{" "}
+    The primary public record tracks Current Model - Official Plays only.
+    Review spots, passes, leans, and internal big-edge review buckets are
+    excluded.
+  </p>
+</div>
         </div>
 
         <section className="mt-8 rounded-2xl border border-neutral-800 bg-neutral-900 p-5 sm:p-6">
