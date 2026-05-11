@@ -152,10 +152,18 @@ function getLastUpdated(games: GameRow[]) {
 
   return rowWithTimestamp?.last_updated || "Manual timestamp coming soon";
 }
+function getStatusCount(games: GameRow[], status: string) {
+  return games.filter((game) => game.status === status).length;
+}
 
 export default async function BoardPage() {
   const games = await getBoardData();
   const lastUpdated = getLastUpdated(games);
+  const officialCount = getStatusCount(games, "Official");
+  const leanCount = getStatusCount(games, "Lean");
+  const passCount = getStatusCount(games, "Pass");
+  const noEdgeCount = getStatusCount(games, "No Edge");
+  const waitingLineupsCount = getStatusCount(games, "Waiting Lineups");
 
   return (
     <main className="min-h-screen bg-neutral-950 text-neutral-100">
@@ -273,6 +281,35 @@ export default async function BoardPage() {
             </div>
           </div>
         </div>
+
+        <div className="mt-6 rounded-2xl border border-neutral-800 bg-neutral-950/70 p-5">
+  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-400">
+    Board status summary
+  </p>
+
+  <div className="mt-4 flex flex-wrap gap-3">
+    <div className="rounded-full border border-neutral-800 px-4 py-2 text-sm text-neutral-300">
+      Official: <span className="font-semibold text-neutral-100">{officialCount}</span>
+    </div>
+
+    <div className="rounded-full border border-neutral-800 px-4 py-2 text-sm text-neutral-300">
+      Lean: <span className="font-semibold text-neutral-100">{leanCount}</span>
+    </div>
+
+    <div className="rounded-full border border-neutral-800 px-4 py-2 text-sm text-neutral-300">
+      Pass: <span className="font-semibold text-neutral-100">{passCount}</span>
+    </div>
+
+    <div className="rounded-full border border-neutral-800 px-4 py-2 text-sm text-neutral-300">
+      No Edge: <span className="font-semibold text-neutral-100">{noEdgeCount}</span>
+    </div>
+
+    <div className="rounded-full border border-neutral-800 px-4 py-2 text-sm text-neutral-300">
+      Waiting Lineups:{" "}
+      <span className="font-semibold text-neutral-100">{waitingLineupsCount}</span>
+    </div>
+  </div>
+</div>
 
         <div className="mt-8 overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900">
           <div className="hidden overflow-x-auto lg:block">
